@@ -1,13 +1,21 @@
 package sutr
 
 import com.agorapulse.dru.Dru
+import com.agorapulse.dru.PreparedDataSet
 import org.junit.Rule
 import spock.lang.Specification
+
 
 
 class DruSpec extends Specification {
 
     @Rule Dru dru = Dru.plan {
+        from 'conference.json', {
+            map { to Conference }
+        }
+    }
+
+    static final PreparedDataSet CONFERENCE_DATA_SET = Dru.prepare {
         from 'conference.json', {
             map { to Conference }
         }
