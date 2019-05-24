@@ -1,0 +1,26 @@
+{
+  "name": "Gr8Conf",
+  "speakers": [
+    {
+      "name": "Vladimir Orany",
+      "company": "Agorapulse",
+      "bio": "The Testing Guy",
+      "sessions": [
+        {
+          "name": "Simple Utilities to Remember"
+        }
+      ]
+    }
+  ],
+  "sessions": [
+    {
+      "name": "Simple Utilities to Remember",
+      "speakers": [
+        {
+          "name": "Vladimir Orany"
+        }
+      ],
+      "annotation": "Lot of stuff to learn"
+    }
+  ]
+}

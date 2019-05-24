@@ -1,0 +1,26 @@
+{
+  "name": "Gr8Conf",
+  "sessions": [
+    {
+      "annotation": "Lot of stuff to learn",
+      "name": "Simple Utilities to Remember",
+      "speakers": [
+        {
+          "name": "Vladimir Dracula"
+        }
+      ]
+    }
+  ],
+  "speakers": [
+    {
+      "bio": "The Testing Guy",
+      "company": "Agorapulse",
+      "name": "Vladimir Dracula",
+      "sessions": [
+        {
+          "name": "Simple Utilities to Remember"
+        }
+      ]
+    }
+  ]
+}
