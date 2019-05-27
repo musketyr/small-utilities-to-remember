@@ -37,7 +37,7 @@ class SpreadsheetExporter {
 
                 for (Session session in conference.sessions) {
                     row {
-                        cell session.speakers.join(', ')
+                        cell session.speakers*.name.join(', ')
                         cell session.name
                         cell session.annotation
                     }
