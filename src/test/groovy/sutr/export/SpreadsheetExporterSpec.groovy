@@ -11,6 +11,8 @@ import spock.lang.Specification
 import sutr.Conference
 import sutr.DruSpec
 
+import java.awt.Desktop
+
 
 class SpreadsheetExporterSpec extends Specification {
 
@@ -28,11 +30,13 @@ class SpreadsheetExporterSpec extends Specification {
         when:
             Conference conference = dru.findByType(Conference)
 
-            File excel = tmp.newFile('example.xlsx')
+            File excel = tmp.newFile("example${System.currentTimeMillis()}.xlsx")
 
             SpreadsheetBuilder spreadsheetBuilder = PoiSpreadsheetBuilder.create(excel)
 
             SpreadsheetExporter.exportConference(spreadsheetBuilder, conference)
+
+            open excel
 
             SpreadsheetCriteria criteria = PoiSpreadsheetCriteria.FACTORY.forFile(excel)
         then:
@@ -42,6 +46,23 @@ class SpreadsheetExporterSpec extends Specification {
             criteria.query {
                 sheet('Sessions')
             }.rows.size() == 2
+            criteria.query {
+                sheet('Sessions') {
+                    row(2) {
+                        cell('A') {
+                            value 'Vladimir Orany'
+                        }
+                    }
+                }
+            }.cells.size() == 1
+    }
+
+
+    private static void open(File file) {
+        if (Desktop.isDesktopSupported() && Desktop.desktop.isSupported(Desktop.Action.OPEN)) {
+            Desktop.desktop.open(file)
+            Thread.sleep(10_000)
+        }
     }
 
 }
